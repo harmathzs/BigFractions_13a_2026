@@ -14,4 +14,10 @@ public class BigFractionTest {
                 new BigInteger("2")
         );
     }
+
+    @Test
+    public void testParse() {
+        BigFraction a = BigFraction.parse("-2/5");
+        System.out.println(a); // BigFraction@201b6b6f
+    }
 }
