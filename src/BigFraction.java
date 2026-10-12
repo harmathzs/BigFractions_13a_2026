@@ -1,4 +1,6 @@
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 
 public class BigFraction {
     private BigInteger numerator;
@@ -60,5 +62,24 @@ public class BigFraction {
                 getNumerator().toString(),
                 getDenominator().toString()
         );
+    }
+
+
+    public BigDecimal toBigDecimal() {
+        BigDecimal bigDecimalNumerator = new BigDecimal(getNumerator());
+        BigDecimal bigDecimalDenominator = new BigDecimal(getDenominator());
+        BigDecimal result = bigDecimalNumerator.divide(bigDecimalDenominator, RoundingMode.HALF_UP);
+        return result;
+    }
+
+    /**
+     * TODO - common denominator check
+     * @param obj BigFraction
+     * @return boolean
+     */
+    @Override
+    public boolean equals(Object obj) {
+        BigFraction other = (BigFraction) obj;
+        return this.toBigDecimal().equals(other.toBigDecimal());
     }
 }
